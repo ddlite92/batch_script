@@ -1,0 +1,3 @@
+cancel shutdown task : shutdown /a
+
+shutdown : shutdown /r /t 30

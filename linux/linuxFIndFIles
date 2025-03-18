@@ -1,0 +1,76 @@
+
+# sort files by date, take top 100 list
+# https://www.tecmint.com/find-and-sort-files-modification-date-and-time-in-linux/
+find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%AD %AT %p" | head -n 100 
+
+# add tee file.txt to print & save result as text
+find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%AD %AT %p" | head -n 100 | tee listfile.txt
+
+# find directory
+find /dir_path -type d -name "your_dir_name"
+
+# To find all regular files that have a filename suffix .xls 
+# reside in or below a directory in the current directory that contain the string SCHEDULE in its name:
+find . -type f -path '*SCHEDULE*/*' -name '*.xls'
+
+# copy file from a list.txt using bash
+for file in `cat listfile.txt`; do cp "$file" /path_destination ; done
+
+# find file within specific range
+find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230116 \! -newermt 20230118
+
+# find file older than  2 days but early than 8 days
+find ./ -type f -path '*Beauty*' -name '*.png' -mtime +2 -a -mtime -8
+
+# https://www.tecmint.com/35-practical-examples-of-linux-find-command/
+
+
+find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230113 \! -newermt 20230118 | head -n 100 | tee listfile.txt
+
+
+# terminal history
+
+"""
+  515  find / -type f -printf "\n%AD %AT %p" | head -n 11
+  516  find ./ -type f -printf "\n%AD %AT %p" | head -n 11
+  517  find ./ -type f -printf "\n%AD %AT %p" | head -n 100
+  518  find ./ -type d -name Beauty -type f -printf "\n%AD %AT %p" | head -n 100
+  519  find ./ -type d -name Beauty && -type f -printf "\n%AD %AT %p" | head -n 100
+  520  find ./ -type f -path '*Beauty*' -printf "\n%AD %AT %p" | head -n 100
+  521  find ./ -type f -path '*Beauty*' -name '*.png'-printf "\n%AD %AT %p" | head -n 100
+  522  find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%AD %AT %p" | head -n 100
+  523  cat file find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%AD %AT %p" | head -n 100
+  524  find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%AD %AT %p" | head -n 100
+  525  cat list.txt
+  526  cat > list.txt
+  527  find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%AD %AT %p" | head -n 100
+  528  ls > listfile.txt
+  529  find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%AD %AT %p" | head -n 100 | tee listfile.txt
+  530  for file in `cat listfile.txt`; do cp "$file" /home/wks_didi/Documents/sc008b/ ; done
+  531  find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%AD %AT %p" | head -n 100 | tee listfile.txt
+  532  find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%AD %AT %p" | head -n 100 | sort -k1M
+  533  find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%Ab %p" | head -n 100
+  534  find ./ -type f -path '*Beauty*' -name '*.png' -mtime +1 -a -mtime -8 ls
+  535  find ./ -type f -path '*Beauty*' -name '*.png' -mtime +1 -a -mtime -8
+  536  find ./ -type f -path '*Beauty*' -name '*.png' -mtime +1 -a
+  537  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230118 \! -newermt 20230116
+  538  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230116 \! -newermt 20230118
+  539  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230115 \! -newermt 20230119
+  540  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230115 \! -newermt 20230119 | sort
+  541  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230115 \! -newermt 20230119 | sort -n
+  542  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230115 \! -newermt 20230118 | sort -n |\ncat listfile.txt
+  543  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230115 \! -newermt 20230119 |\ncat listfile.txt
+  544  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230115 \! -newermt 20230119
+  545  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230113 \! -newermt 20230119 | tee listfile.txt
+  546  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230113 \! -newermt 20230118 | tee listfile.txt
+  547  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230113 \! -newermt 20230118 | cat > listfile.txt
+  548  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230118 \! -newermt 20230116
+  549  find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%AD %AT %p" | head -n 100 | tee listfile.txt
+  550  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230113 \! -newermt 20230118 | head -n 100 | tee listfile.txt
+  551  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230113 \! -newermt 20230118 | head -n 100
+  552  find ./ -type f -path '*Beauty*' -name '*.png' -printf "\n%Ab %p" | head -n 100
+  553  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230113 \! -newermt 20230118
+  554  find ./ -type f -path '*Beauty*' -name '*.png' -newermt 20230113 \! -newermt 20230118 | tee listfile.txt
+  555  for file in `cat listfile.txt`; do cp "$file" /home/wks_didi/Documents/sc008b/ ; done
+
+"""
